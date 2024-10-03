@@ -21,6 +21,7 @@ def ex_1():
 	#  plt.show()
 	plt.savefig("Plot_ex_1_frc_60.pdf")
 	#  plt.savefig("Plot_ex_1_frc_200.pdf")
+	plt.cla()
 
 def ex_2():
 	def plot_1d(f, x, id_pct):
@@ -72,10 +73,31 @@ def ex_3():
 	# Pct b: 0.125 byte/bit * 4 bit/esantion * 2000 esantion/sec * 60 sec/ora = 60000 byte
 	pass
 
+def ex_optionale():
+	# Frecventa variaza
+	x=np.linspace(0, 5, 1000)
+	f=lambda t: np.sin(2*np.pi*t*t)
+	plt.plot(x, f(x))
+	plt.suptitle(f"Exercitiu optional")
+	plt.savefig(f"Plot_ex_optional_1.pdf")
+	plt.cla()
+
+	# Doua sinusoide diferite care arata la fel
+	fig, axs=plt.subplots(2)
+	fig.suptitle("Exercitiu optional")
+	x=np.linspace(0, 1, 100)
+	s0=sinusoida(1, 200, 0)
+	s1=sinusoida(1, 2, 0)
+	axs[0].plot(x, s0(x))
+	axs[1].plot(x, s1(x))
+	plt.savefig("Plot_ex_optional_2.pdf")
+	plt.cla()
+
 def main():
 	#  ex_1()
 	#  ex_2()
 	#  ex_3()
+	#  ex_optionale()
 	pass
 
 if __name__=="__main__":
