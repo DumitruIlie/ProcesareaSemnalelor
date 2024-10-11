@@ -1,5 +1,8 @@
+# Ilie Dumitru
+
 import numpy as np
 import matplotlib.pyplot as plt
+import scipy
 
 def sinusoida(A, frq, phz):
 	return lambda x: A*np.sin(2*np.pi*frq*x+phz)
@@ -24,7 +27,11 @@ def ex_1():
 	plt.cla()
 
 def ex_2():
+	def saveSignal(signal, filePath="./semnal.wav"):
+		scipy.io.wavfile.write(filePath, 1_000_000, signal)
+
 	def plot_1d(f, x, id_pct):
+		saveSignal(f(np.linspace(0, 10, 30000)), f"./semnal_ex_{id_pct}.wav")
 		plt.plot(x, f(x))
 		plt.suptitle(f"Exercitiu 2 pct {id_pct}")
 		plt.savefig(f"Plot_ex_2_pct_{id_pct}.pdf")
@@ -95,7 +102,7 @@ def ex_optionale():
 
 def main():
 	#  ex_1()
-	#  ex_2()
+	ex_2()
 	#  ex_3()
 	#  ex_optionale()
 	pass
