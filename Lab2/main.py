@@ -75,11 +75,13 @@ def ex_4():
 
 def ex_5():
 	x=np.linspace(0, 1, 50000)
-	f=sinusoidal(10, 400, 0)
-	g=sinusoidal(10, 200, 0)
+	f=sinusoidal(1, 400, 0)
+	g=sinusoidal(1, 390, 0)
 	playSignal(f(x))
 	playSignal(g(x))
-	playSignal(f(x)+g(x))
+	playSignal(np.concatenate((f(x), g(x))))
+
+	playSignal(np.concatenate([sinusoidal(1, frq, 0)(x) for frq in range(300, 401, 5)]))
 
 def ex_6():
 	fs=100
