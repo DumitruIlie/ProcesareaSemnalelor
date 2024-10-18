@@ -1,0 +1,4 @@
+# Ilie Dumitru
+
+Pct a: 1/2000 sec = 0.0005 sec
+Pct b: 0.125 byte/bit * 4 bit/esantion * 2000 esantion/sec * 60 sec/ora = 60000 byte
