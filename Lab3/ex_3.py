@@ -6,7 +6,7 @@ import ex_1
 
 # [start, end)
 def linspace(start, end, steps):
-	return np.arange(steps)*((end-start)/steps)
+	return start+np.arange(steps)*((end-start)/steps)
 
 def main():
 	semnal=lambda x: 0.5*np.sin(2*np.pi*50*x+np.pi*0.5)+2*np.cos(2*np.pi*20*x+np.pi/3)+np.cos(2*np.pi*30*x)
