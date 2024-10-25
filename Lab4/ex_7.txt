@@ -1,0 +1,7 @@
+# Ilie Dumitru
+
+SNR_dB = 10 * log_10 SNR = 80 dB
+=> SNR = 10 ** 8
+
+P_semnal = 90 dB
+=> P_zgomot = 90 * (10 ** -8) dB = 0.0000009 dB

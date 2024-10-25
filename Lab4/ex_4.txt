@@ -1,0 +1,3 @@
+# Ilie Dumitru
+
+Frecventa de esantionare trebuie sa fie strict mai mare de 400Hz. Orice frecventa sub aceasta va pierde informatie
