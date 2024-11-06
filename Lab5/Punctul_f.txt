@@ -1,0 +1,10 @@
+Perioada 762.0 ore, frecventa 1.518907358802372e-08 Hz
+Perioada 381.0 ore, frecventa 3.037814717604744e-08 Hz
+Perioada 1.0 ore, frecventa 1.1574074074074075e-05 Hz
+Perioada 254.0 ore, frecventa 4.5567220764071157e-08 Hz
+Perioada 6.99 ore, frecventa 1.6556090210945855e-06 Hz
+Perioada 190.5 ore, frecventa 6.075629435209488e-08 Hz
+Perioada 1.0 ore, frecventa 1.1589263147662098e-05 Hz
+Perioada 152.4 ore, frecventa 7.59453679401186e-08 Hz
+Perioada 108.86 ore, frecventa 1.0632351511616604e-07 Hz
+Perioada 0.5 ore, frecventa 2.314814814814815e-05 Hz
