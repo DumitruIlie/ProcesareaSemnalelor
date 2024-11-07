@@ -35,7 +35,7 @@ def main():
 	maxime=sorted(list(range(N//2)), key=lambda i : -np.abs(fft[i]))[:10]
 	importante=[(round(N/max((1, m))/24, 2), m) for m in maxime]
 	with open("Punctul_f.txt", "w") as fisier:
-		fisier.writelines("\n".join([f"Perioada {peri} ore, frecventa {frecvente[frcv]} Hz" for peri, frcv in importante]))
+		fisier.writelines("\n".join([f"Perioada {peri} zile, frecventa {frecvente[frcv]} Hz" for peri, frcv in importante]))
 
 	# Punctul g
 	# Am ales 03.12.2012. Ar trebui sa fie multe masini, fiind sarbatorile
