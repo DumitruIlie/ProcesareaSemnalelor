@@ -1,0 +1,2 @@
+SNR inainte de eliminarea zgomotului: 0.2277493666944429, dupa 4.300528811427575
+In decibeli: -6.425428220014679 respectiv 6.335218615713082

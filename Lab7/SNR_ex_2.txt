@@ -1,0 +1,2 @@
+SNR-ul imaginii este 0.3413609637894691, iar in decibeli -4.667861439715201
+SNR-ul imaginii este 4.300528811427575, iar in decibeli 6.335218615713082
