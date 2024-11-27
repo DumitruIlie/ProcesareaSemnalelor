@@ -52,10 +52,15 @@ def main():
 		times=np.array([myTimes, npTimes])
 		np.save(saveFile, times)
 
-	plt.plot(np.array(ns), myTimes, "red")
-	plt.plot(np.array(ns), npTimes, "green")
+	plt.plot(np.array(ns), myTimes, "red", label="DFT time")
+	plt.plot(np.array(ns), npTimes, "green", label="FFT time")
 	plt.xscale("log")
 	plt.yscale("log")
+	plt.suptitle("Timpi")
+	plt.xlabel("Ns")
+	plt.ylabel("sec")
+	plt.xticks(np.array(ns), np.array(ns, dtype=int))
+	plt.legend()
 	plt.savefig("Plot_ex_1.pdf")
 	plt.clf()
 

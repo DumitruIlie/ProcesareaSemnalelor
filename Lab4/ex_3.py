@@ -13,7 +13,7 @@ def main():
 	t=lambda x : np.sin(2*np.pi*6*x)
 	u=lambda x : np.sin(-2*np.pi*x)
 
-	fig, axs=plt.subplots(3)
+	fig, axs=plt.subplots(3, layout="constrained")
 
 	# Sunt de fapt 3 semnale
 	axs[0].plot(x, s(x), "red")
@@ -24,6 +24,16 @@ def main():
 	axs[0].stem(y, s(y), "pink")
 	axs[1].stem(y, t(y), "yellow")
 	axs[2].stem(y, u(y), "cyan")
+
+	axs[0].set_ylabel("Amplitudine")
+	axs[1].set_ylabel("Amplitudine")
+	axs[2].set_ylabel("Amplitudine")
+
+	axs[0].set_xlabel("Timp")
+	axs[1].set_xlabel("Timp")
+	axs[2].set_xlabel("Timp")
+
+	fig.suptitle("Lipsa aliere")
 
 	plt.savefig("Plot_ex_3.pdf")
 	plt.clf()

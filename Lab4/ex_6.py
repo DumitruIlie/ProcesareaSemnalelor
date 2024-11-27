@@ -16,15 +16,18 @@ def spectrograma(sgn):
 		raise Exception("Signal too short for processing")
 
 	L=N//100
-	spectr=[]
+	spectr=np.ones((N//(L//2)-1, L), dtype=complex)
 	for i in range(0, N, L//2):
 		if i+L<=N:
-			spectr.append(np.fft.fft(sgn[i:i+L]))
-	return 10*np.log10(np.abs(np.array(spectr).T))
+			spectr[i//(L//2), :]=np.fft.fft(sgn[i:i+L])
+	return 10*np.log10(np.abs(spectr.T))
 
 def drawSpec(spec, subpunct):
 	plt.imshow(spec[:spec.shape[0]//2], origin="lower", cmap="plasma")
 	plt.gca().set_aspect("auto")
+	plt.suptitle(f"Spectrograma {subpunct}")
+	plt.xlabel("Timp")
+	plt.ylabel("Frecventa")
 	plt.savefig(f"Plot_ex_6_{subpunct}.pdf")
 	plt.clf()
 
