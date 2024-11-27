@@ -15,8 +15,10 @@ def main():
 	g=cosinusoidal(1, 3, 0)
 
 	fig, axs=plt.subplots(2)
-	axs[0].plot(x, f(x))
-	axs[1].plot(x, g(x))
+	axs[0].plot(x, f(x), label="sinusoidala")
+	axs[0].legend()
+	axs[1].plot(x, g(x), label="cosinusoidala")
+	axs[1].legend()
 	plt.savefig("Plot_ex_1.pdf")
 	plt.close()
 

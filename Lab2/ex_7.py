@@ -9,10 +9,13 @@ def sinusoidal(A, frq, phi):
 def main():
 	f=sinusoidal(1, 30, 0)
 	x=[np.linspace(0, 1, 1000//(4**i)) for i in range(3)]
-	fig, axs=plt.subplots(3)
+	fig, axs=plt.subplots(3, layout="constrained")
 	axs[0].plot(x[0], f(x[0]))
+	axs[0].set_title("Semnal")
 	axs[1].plot(x[1], f(x[1]))
+	axs[1].set_title("Decimat 1/4")
 	axs[2].plot(x[2], f(x[2]))
+	axs[2].set_title("Decimat 1/16")
 	plt.savefig("Plot_ex_7.pdf")
 	plt.close()
 

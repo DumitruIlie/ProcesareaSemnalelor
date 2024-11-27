@@ -20,15 +20,19 @@ def main():
 	f=[sinusoidal(1, 4, ph) for ph in [0, np.pi*0.5, np.pi, np.pi*1.5]]
 	for g in f:
 		plt.plot(x, g(x))
+	plt.suptitle("Semnal fara zgomot")
 	plt.savefig("Plot_ex_2_no_noise.pdf")
 	plt.cla()
 
 	SNRs=[100, 10, 1, 0.1]
-	fig, axs=plt.subplots(len(SNRs)+1)
+	fig, axs=plt.subplots(len(SNRs)+1, layout="constrained")
 	axs[0].plot(x, f[0](x))
+	axs[0].set_title("Semnal pur")
 	for i in range(len(SNRs)):
 		SNR=SNRs[i]
 		axs[i+1].plot(x, noiseify(f[0](x), SNR))
+		axs[i+1].set_title(f"{SNR=}")
+		#  axs[i+1].legend()
 	plt.savefig("Plot_ex_2_noised.pdf")
 	plt.cla()
 

@@ -12,8 +12,11 @@ def main():
 	x=np.linspace(0, 5, 10000)
 	fig, axs=plt.subplots(3)
 	axs[0].plot(x, f(x))
+	axs[0].set_title("sinusoida")
 	axs[1].plot(x, g(x))
+	axs[1].set_title("sawtooth")
 	axs[2].plot(x, f(x)+g(x))
+	axs[2].set_title("suma")
 
 	plt.savefig("Plot_ex_4.pdf")
 	plt.close()
