@@ -26,9 +26,16 @@ def main():
 	# Destul de sigur ca este mai rapida versiunea de jos.
 	#  R=np.convolve(p, q)
 
-	fig, axs=plt.subplots(2)
+	fig, axs=plt.subplots(2, layout="constrained")
 	axs[0].plot(np.arange(r.shape[0]), r)
+	axs[0].set_title("Convolutia mea")
+	axs[0].set_xlabel("x")
+	axs[0].set_ylabel("(p*q)(x)")
 	axs[1].plot(np.arange(R.shape[0]), np.abs(R))
+	axs[1].set_title("Convolutia din numpy")
+	axs[1].set_xlabel("x")
+	axs[1].set_ylabel("(p*q)(x)")
+	plt.suptitle("Convolutii")
 	plt.savefig("Plot_ex_2.pdf")
 	plt.clf()
 

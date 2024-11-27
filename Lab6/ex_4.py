@@ -13,13 +13,21 @@ def main():
 	# Punctul a
 	semnal=semnal[:3*24]
 	ws=[5, 9, 13, 17]
-	fig, axs=plt.subplots(1+len(ws))
+	fig, axs=plt.subplots(1+len(ws), layout="constrained", figsize=(5, (len(ws)+1)*3))
 	axs[0].plot(np.arange(semnal.shape[0]), semnal)
+	axs[0].set_xlabel("Timp")
+	axs[0].set_ylabel("Amplitudine")
+	axs[0].set_title("Semnal original")
 
 	# Punctul b
 	for w in range(len(ws)):
-		conv=np.convolve(semnal, np.ones(ws[w]), "valid")
+		conv=np.convolve(semnal, np.ones(ws[w])/ws[w], "valid")
 		axs[w+1].plot(np.arange(conv.shape[0]), conv)
+		axs[w+1].set_xlabel("Timp")
+		axs[w+1].set_ylabel("Amplitudine")
+		axs[w+1].set_title(f"Filtrare cu len={ws[w]}")
+
+	plt.suptitle("Filtrari cu medie alunecatoare")
 	plt.savefig("Plot_ex_4_pct_b.pdf")
 	plt.close()
 
@@ -41,10 +49,20 @@ def main():
 	filtrat2=scipy.signal.filtfilt(*filt2, semnal)
 
 	# Punctul e
-	fig, axs=plt.subplots(3)
+	fig, axs=plt.subplots(3, layout="constrained")
 	axs[0].plot(np.arange(semnal.shape[0]), semnal)
+	axs[0].set_xlabel("Timp")
+	axs[0].set_ylabel("Amplitudine")
+	axs[0].set_title("Semnal original")
 	axs[1].plot(np.arange(filtrat1.shape[0]), filtrat1)
+	axs[1].set_xlabel("Timp")
+	axs[1].set_ylabel("Amplitudine")
+	axs[1].set_title("Filtrare cu Butterworth")
 	axs[2].plot(np.arange(filtrat2.shape[0]), filtrat2)
+	axs[2].set_xlabel("Timp")
+	axs[2].set_ylabel("Amplitudine")
+	axs[2].set_title("Filtrare cu Chebyshev")
+	plt.suptitle("Filtre Butterworth si Chebyshev")
 	plt.savefig("Plot_ex_4_pct_e.pdf")
 	plt.close()
 
@@ -54,21 +72,29 @@ def main():
 	orders=[3, 4, 5, 6, 7]
 	rps=[4, 5, 6]
 	nrPlots=1+len(orders)*(len(rps)+1)
-	fig, axs=plt.subplots(nrPlots)
+	fig, axs=plt.subplots(nrPlots, layout="constrained")
 	fig.set_figheight(nrPlots*1.2)
-	fig.subplots_adjust(hspace=0.7)
 	axs=axs.reshape(-1)
+
 	plot(axs[0], semnal)
 	axs[0].set_title("Original")
+	axs[0].set_xlabel("Timp")
+	axs[0].set_ylabel("Amplitudine")
 	for i in range(len(orders)):
 		filt=scipy.signal.butter(orders[i], Wn, btype="low", fs=fs)
 		plot(axs[1+i*len(rps)+i], scipy.signal.filtfilt(*filt, semnal))
 		axs[1+i*len(rps)+i].set_title(f"Butter ordin {orders[i]}")
+		axs[1+i*len(rps)+i].set_xlabel("Timp")
+		axs[1+i*len(rps)+i].set_ylabel("Amplitudine")
 
 		for j in range(len(rps)):
 			filt=scipy.signal.cheby1(orders[i], rps[j], Wn, btype="lowpass", fs=fs)
 			plot(axs[2+i*len(rps)+i+j], scipy.signal.filtfilt(*filt, semnal))
 			axs[2+i*len(rps)+i+j].set_title(f"Chebyshev ordin {orders[i]}, rp {rps[j]} dB")
+			axs[2+i*len(rps)+i+j].set_xlabel("Timp")
+			axs[2+i*len(rps)+i+j].set_ylabel("Amplitudine")
+
+	plt.suptitle("Filtrari")
 	plt.savefig("Plot_ex_4_pct_f.pdf")
 	plt.close()
 
