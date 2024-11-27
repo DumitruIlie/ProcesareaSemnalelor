@@ -18,8 +18,13 @@ def desenMatrice(M):
 	fig, axs=plt.subplots(N)
 	x=np.arange(N)
 	for i in range(N):
-		axs[i].plot(x, M[i, :].real, "green")
-		axs[i].plot(x, M[i, :].imag, "red")
+		axs[i].plot(x, M[i, :].real, "green", label="real")
+		axs[i].plot(x, M[i, :].imag, "red", label="imaginar")
+		axs[i].set_ylim(-1, 1)
+
+	handles, labels = axs[0].get_legend_handles_labels()
+	fig.legend(handles, labels, loc='upper center')
+
 	plt.savefig("Plot_ex_1.pdf")
 	plt.cla()
 

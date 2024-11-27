@@ -13,8 +13,11 @@ def main():
 	#  x=np.linspace(0, 1, 1024)
 	x=linspace(0, 1, 1024)
 
-	fig, axs=plt.subplots(2, figsize=(5, 10))
+	fig, axs=plt.subplots(2, figsize=(5, 9.5), layout="constrained")
 	axs[0].plot(x, semnal(x))
+	axs[0].set_xlabel("Timp")
+	axs[0].set_ylabel("Amplitudine")
+	axs[0].set_title("Semnal")
 
 	N=x.shape[0]
 	X=np.zeros(N, dtype=complex)
@@ -24,6 +27,9 @@ def main():
 
 	axs[1].stem(np.arange(N), np.abs(X))
 	axs[1].set_aspect("equal")
+	axs[1].set_xlabel("Frecventa")
+	axs[1].set_ylabel("Intensitate")
+	axs[1].set_title("FFT")
 
 	plt.savefig("Plot_ex_3.pdf")
 	plt.close(fig)
