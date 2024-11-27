@@ -21,6 +21,9 @@ def main():
 	frecvente=FS/N*np.linspace(0, N//2-1, N//2)
 	fft=(np.fft.fft(semnal[1]))[:N//2]
 	plt.plot(frecvente, np.abs(fft))
+	plt.xlabel("Frecvente")
+	plt.ylabel("Intensitate")
+	plt.suptitle("FFT")
 	plt.savefig("Plot_ex_d.pdf")
 	plt.clf()
 
@@ -28,6 +31,9 @@ def main():
 	# Deja am facut fft pentru semnal, scot componenta constanta
 	fft[0]=0
 	plt.plot(frecvente, np.abs(fft))
+	plt.xlabel("Frecvente (fara medie)")
+	plt.ylabel("Intensitate")
+	plt.suptitle("FFT")
 	plt.savefig("Plot_ex_e.pdf")
 	plt.clf()
 
@@ -44,6 +50,9 @@ def main():
 	times=startingPoint+np.arange(days*24)
 	values=semnal[1, times]
 	plt.plot(np.arange(days*24), values)
+	plt.suptitle("Masini in decembrie 2012")
+	plt.xlabel("Timp")
+	plt.ylabel("Nr. masini")
 	plt.savefig("Plot_ex_g.pdf")
 	plt.clf()
 
@@ -67,6 +76,9 @@ def main():
 	aux=((N/aux)>=8)
 	aux=fft*aux
 	plt.plot(frecvente, np.abs(aux))
+	plt.xlabel("Timp")
+	plt.ylabel("Intensitate (redusa)")
+	plt.suptitle("FFT (redus)")
 	plt.savefig("Plot_ex_i.pdf")
 	plt.clf()
 
