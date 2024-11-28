@@ -24,11 +24,15 @@ def main():
 
 	noise=img-img2
 
-	fig, axs=plt.subplots(4, figsize=(10, 40))
+	fig, axs=plt.subplots(4, figsize=(10, 40), layout="constrained")
 	axs[0].imshow(img, cmap="gray")
+	axs[0].set_title("Imagine")
 	axs[1].imshow(img2, cmap="gray")
+	axs[1].set_title("Imagine redusa")
 	axs[2].imshow(noise, cmap="gray")
+	axs[2].set_title("Zgomot")
 	axs[3].imshow(np.abs(noise), cmap="gray")
+	axs[3].set_title("|Zgomot|")
 	plt.savefig("Plot_ex_2.pdf")
 	plt.clf()
 
