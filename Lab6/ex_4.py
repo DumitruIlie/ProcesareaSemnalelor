@@ -68,6 +68,23 @@ def main():
 
 	# As folosi filtrul Butterworth, deoarece pare sa reflecte mai bine caracteristicile semnalului original
 
+	fig, axs=plt.subplots(3, layout="constrained")
+	axs[0].stem(np.arange(semnal.shape[0]), 10*np.log10(np.abs(np.fft.fft(semnal))))
+	axs[0].set_xlabel("Frecventa")
+	axs[0].set_ylabel("Intensitate (dB)")
+	axs[0].set_title("FFT semnal original")
+	axs[1].stem(np.arange(filtrat1.shape[0]), 10*np.log10(np.abs(np.fft.fft(filtrat1))))
+	axs[1].set_xlabel("Frecventa")
+	axs[1].set_ylabel("Intensitate (dB)")
+	axs[1].set_title("FFT semnal filtrat cu Butterworth")
+	axs[2].stem(np.arange(filtrat2.shape[0]), 10*np.log10(np.abs(np.fft.fft(filtrat2))))
+	axs[2].set_xlabel("Frecventa")
+	axs[2].set_ylabel("Intensitate (dB)")
+	axs[2].set_title("FFT semnal filtrat cu Chebyshev")
+	plt.suptitle("FFT semnal filtrat")
+	plt.savefig("Plot_fft_semnal_filtrat.pdf")
+	plt.clf()
+
 	# Punctul f
 	orders=[3, 4, 5, 6, 7]
 	rps=[4, 5, 6]
