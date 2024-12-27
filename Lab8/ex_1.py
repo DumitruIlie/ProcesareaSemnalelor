@@ -16,14 +16,20 @@ def predictii(series, coefs):
 def predictie(series, coefs):
 	return np.matmul(series[-coefs.shape[0]:], coefs)[0]
 
+def get_all_predictions(coefs, series, start):
+	return np.convolve(series[start-coefs.size:], coefs, mode="valid")
+
 def AR(y, p, m):
 	Y=np.zeros((m, p))
 	for i in range(m):
-		for j in range(p):
-			Y[i][j]=series[i+j]
+		Y[i]=y[i:i+p]
 	Gamma=np.matmul(Y.T, Y)
-	gamma=np.matmul(Y.T, series[D:].copy().reshape((-1, 1)))
-	x=np.linalg.solve(Gamma, gamma)
+	gamma=np.matmul(Y.T, y[p:p+m].copy().reshape((-1, 1)))
+	x=np.linalg.solve(Gamma, gamma).reshape(-1)
+
+	errVal=np.linalg.norm(get_all_predictions(x, y, p)[:-1]-y[p:])
+
+	return x, errVal
 
 def main():
 	# Punctul a
@@ -92,6 +98,30 @@ def main():
 	fig.suptitle(f"Predictii cu dimensiune p={D}\nsi orizont maxim")
 	plt.legend()
 	plt.savefig("Plot_predictii.pdf")
+	plt.clf()
+
+	# Punctul d
+	minErr=1e200
+	for p in range(1, N):
+		for m in range(p, N):
+			if m+p>=N:
+				break
+			coefs, err=AR(series, p, m)
+			if err<minErr:
+				minErr=err
+				minCoefs=coefs
+				minP=p
+				minM=m
+
+	bestPred=get_all_predictions(series, minCoefs, minP)
+	plt.subplots(1, figsize=(5, 5))
+	plt.plot(times, series, "green", label="actual")
+	plt.plot(np.arange(bestPred.shape[0])*0.01+minP*0.01, bestPred, "red", label="predictie")
+	plt.suptitle(f"Cea mai buna predictie (p={minP}, m={minM})")
+	plt.xlabel("x")
+	plt.ylabel("y")
+	plt.legend()
+	plt.savefig("Predictia_cea_mai_buna.pdf")
 	plt.clf()
 
 if __name__=="__main__":
